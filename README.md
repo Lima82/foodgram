@@ -19,7 +19,8 @@ Foodgram - это онлайн-платформа дял публикации и
 - Django
 - Django REST Framework (DRF)
 - Django Filter
-- Djoser (аутентификация)
+- Djoser (аутентификация, регистрация, управление пользователями)
+- Token Authentication (DRF токены)
 - SQLite3 (разработка)/PostrgSQL (продакшен)
 - Pillow (работа с изображениями)
 - Gunicorn (WSGI-сервер)
