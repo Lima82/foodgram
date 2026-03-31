@@ -83,19 +83,36 @@ class RecipeAdmin(admin.ModelAdmin):
             )
         return "-"
 
-
+# @admin.register(Favorite)
 class FavoriteAdmin(admin.ModelAdmin):
     """Настройка админки для избранного."""
 
-    list_display = ('id', 'user', 'recipe')
-    search_fields = ('user__username', 'recipe__name')
+    # list_display = ('id', 'user', 'recipe')
+    # search_fields = ('user__username', 'recipe__name')
+
+    # @admin.action(description="Удалить выбранные избранные")
+    # def delete_selected(self, request, queryset):
+    #     count = queryset.count()
+    #     queryset.delete()
+    #     self.message_user(request, f'Успешно удалено {count} записей из избранного.')
+
+    # actions = ['delete_selected']
 
 
+# @admin.register(ShoppingCart)
 class ShoppingCartAdmin(admin.ModelAdmin):
     """Настройка админки для листа покупок."""
 
     list_display = ('id', 'user', 'recipe')
     search_fields = ('user__username', 'recipe__name')
+
+    # @admin.action(description="Удалить выбранные покупки")
+    # def delete_selected(self, request, queryset):
+    #     count = queryset.count()
+    #     queryset.delete()
+    #     self.message_user(request, f'Успешно удалено {count} записей из списка покупок.')
+
+    # actions = ['delete_selected']
 
 
 admin.site.register(Tag, TagAdmin)
