@@ -202,5 +202,5 @@ DJOSER = {
 }
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://orlm82.hopto.org',
+    'https://orlm82.ddns.net',
 ]
