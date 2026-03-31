@@ -49,7 +49,7 @@ services:
       - static:/staticfiles/
       - media:/media/
     #  - ./docs/:/usr/share/nginx/html/api/docs/
-      - ./docs/:/usr/share/nginx/html/
+      - ./docs/:/usr/share/nginx/html/api/docs/
     depends_on:
       - backend
       - frontend
