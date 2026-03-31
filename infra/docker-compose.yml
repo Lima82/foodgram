@@ -1,68 +1,17 @@
-# version: '3.3'
-# services:
-
-#   frontend:
-#     container_name: foodgram-front
-#     build: ../frontend
-#     volumes:
-#       - ../frontend/:/app/result_build/
-#   nginx:
-#     container_name: foodgram-proxy
-#     image: nginx:1.25.4-alpine
-#     ports:
-#       - "80:80"
-#     volumes:
-#       - ./nginx.conf:/etc/nginx/conf.d/default.conf
-#       - ../frontend/build:/usr/share/nginx/html/
-#       - ../docs/:/usr/share/nginx/html/api/docs/
 version: '3.3'
-
-volumes:
-  pg_data:
-  static:
-  media:
-  frontend_build:
-
 services:
-  db:
-    image: postgres:13
-    env_file: .env
-    volumes:
-      - pg_data:/var/lib/postgresql/data
-  backend:
-    image: lima82/foodgram_backend:latest
-    env_file: .env
-    volumes:
-      - static:/app/static
-      - media:/app/media
-    depends_on:
-      - db
+
   frontend:
-    # container_name: foodgram-front
-    # build: ../frontend
-    # volumes:
-    #   - ../frontend/:/app/result_build/
-    image: lima82/foodgram_frontend:latest
+    container_name: foodgram-front
+    build: ../frontend
     volumes:
-      - frontend_build:/app/build
-    command: cp -r /app/build/. /static/
+      - ../frontend/:/app/result_build/
   nginx:
-    # container_name: foodgram-proxy
-    # image: nginx:1.25.4-alpine
-    # ports:
-    #   - "80:80"
-    # volumes:
-    #   - ./nginx.conf:/etc/nginx/conf.d/default.conf
-    #   - ../frontend/build:/usr/share/nginx/html/
-    #   - ../docs/:/usr/share/nginx/html/api/docs/
+    container_name: foodgram-proxy
     image: nginx:1.25.4-alpine
     ports:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
-      - static:/static
-      - media:/media
-      - frontend_build:/usr/share/nginx/html
-    depends_on:
-      - backend
-      - frontend
+      - ../frontend/build:/usr/share/nginx/html/
+      - ../docs/:/usr/share/nginx/html/api/docs/

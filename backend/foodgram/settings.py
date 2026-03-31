@@ -13,7 +13,7 @@ if os.path.exists(BASE_DIR / '.env'):
 
 # DEBUG = True
 
-# ALLOWED_HOSTS = ['localhost', '127.0.0.1', '158.160.222.87', 'orlm82.hopto.org']
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1', '158.160.222.87', 'orlm82.ddns.net']
 
 SECRET_KEY = os.getenv('SECRET_KEY', default=get_random_secret_key())
 
@@ -137,12 +137,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 # STATIC_ROOT = BASE_DIR / 'static'
 # STATIC_ROOT = '/backend_static/static/'
 # STATIC_ROOT = '/app/static'
 
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 # MEDIA_ROOT = BASE_DIR / 'media'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # MEDIA_ROOT = '/app/media'
@@ -151,8 +151,8 @@ if os.path.exists('/app'):
     STATIC_ROOT = '/app/static'
     MEDIA_ROOT = '/app/media'
 else:
-    STATIC_ROOT = BASE_DIR / 'static'
-    MEDIA_ROOT = BASE_DIR / 'media'
+    STATIC_ROOT = '/backend_static/static/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
