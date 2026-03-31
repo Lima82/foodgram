@@ -67,7 +67,7 @@ class RecipeAdmin(admin.ModelAdmin):
         """Подсчет, сколько раз рецепт был добавлен в избранное."""
         return obj.favorite_count
 
-    # добавляем 
+    # добавляем
     @admin.display(description='Теги')
     def get_tags(self, obj):
         """Показывает теги в виде строки."""
