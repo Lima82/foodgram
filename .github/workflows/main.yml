@@ -184,8 +184,9 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
-          source: "data/ingredients.csv"
-          target: "~/foodgram/backend/data/"
+          source: "data/"
+          target: "~/foodgram/"
+          strip_components: 0
       - name: Copy docs via ssh
         uses: appleboy/scp-action@master
         with:
@@ -193,8 +194,8 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           source: "docs/"
-          target: "~/foodgram/docs/"
-          strip_components: 1
+          target: "~/foodgram/"
+          strip_components: 0
       - name: Copy fixtures via ssh
         uses: appleboy/scp-action@master
         with:
