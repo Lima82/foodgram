@@ -18,7 +18,8 @@ services:
       #- static:/backend_static
       - static:/app/static/
       - media:/app/media/
-      - .data/:data/
+      - /home/ubuntu/foodgram/data:/data
+      - home/ubuntu/foodgram/backend/fixtures:/app/fixtures
     depends_on:
       - db
   frontend:

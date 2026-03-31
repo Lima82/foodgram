@@ -202,7 +202,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
-          source: "backend/foodgram_fixtures.json"
+          source: "backend/fixtures"
           target: "~/foodgram/backend/"
       - name: Executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
