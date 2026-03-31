@@ -13,7 +13,7 @@ if os.path.exists(BASE_DIR / '.env'):
 
 # DEBUG = True
 
-# ALLOWED_HOSTS = ['localhost', '127.0.0.1', '158.160.222.87', 'orlm82.ddns.net']
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1', '158.160.222.87', 'orlm82.ddns.net', host.docker.internal]
 
 SECRET_KEY = os.getenv('SECRET_KEY', default=get_random_secret_key())
 
@@ -148,10 +148,11 @@ MEDIA_URL = '/media/'
 # MEDIA_ROOT = '/app/media'
 
 if os.path.exists('/app'):
-    STATIC_ROOT = '/app/static'
-    MEDIA_ROOT = '/app/media'
+    STATIC_ROOT = '/app/static/'
+    MEDIA_ROOT = '/app/media/'
 else:
-    STATIC_ROOT = '/backend_static/static/'
+    # STATIC_ROOT = '/backend_static/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

@@ -14,7 +14,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:15
+        image: postgres:13.10
         env:
           POSTGRES_USER: django_user
           POSTGRES_PASSWORD: django_password
@@ -129,7 +129,7 @@ jobs:
       - name: Push to DockerHub
         uses: docker/build-push-action@v4
         with:
-          context: ./infra/
+          context: ./nginx/
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/foodgram_gateway:latest
 
@@ -152,7 +152,7 @@ jobs:
           #   infra/docker-compose.yml"
           #   infra/nginx.conf
           source: "docker-compose.production.yml"
-          # target: "~foodgram/infra/"
+          # target: "~foodgram/"
           target: "foodgram/"
       # - name: Copy nginx.conf via ssh
       #   uses: appleboy/scp-action@master
@@ -162,14 +162,14 @@ jobs:
       #     key: ${{ secrets.SSH_KEY }}
       #     source: "infra/nginx.conf"
       #     target: "~/foodgram/infra/"
-      - name: Copy fixtures via ssh
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          key: ${{ secrets.SSH_KEY }}
-          source: "backend/foodgram_fixtures.json"
-          target: "~/foodgram/"
+      # - name: Copy fixtures via ssh
+      #   uses: appleboy/scp-action@master
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USER }}
+      #     key: ${{ secrets.SSH_KEY }}
+      #     source: "backend/foodgram_fixtures.json"
+      #     target: "~/foodgram/backend/"
       # - name: Copy frontend via ssh
       #   uses: appleboy/scp-action@master
       #   with:
@@ -199,11 +199,12 @@ jobs:
             sudo docker compose -f docker-compose.production.yml pull
             sudo docker compose -f docker-compose.production.yml down
             sudo docker compose -f docker-compose.production.yml up -d
-            sleep 15
+            sleep 10
             sudo docker compose -f docker-compose.production.yml exec backend python manage.py migrate
             sudo docker compose -f docker-compose.production.yml exec backend python manage.py collectstatic --no-input
             sudo docker compose -f docker-compose.production.yml exec backend python manage.py load_ingredients
-            sudo docker compose -f docker-compose.production.yml exec backend python manage.py loaddata foodgram_fixtures.json
+      #      sudo docker compose -f docker-compose.production.yml exec backend python manage.py loaddata foodgram_fixtures.json
+            sudo docker compose -f docker-compose.production.yml ps
 
   send_message:
     runs-on: ubuntu-latest

@@ -1,7 +1,7 @@
 import csv
 
 from django.db.models import BooleanField, Case, Value, When
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.shortcuts import get_object_or_404, redirect
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status, viewsets
@@ -361,6 +361,9 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
 def redirect_to_recipe(request, code):
     """Редирект по короткой ссылке на страницу рецепта."""
-    recipe = get_object_or_404(Recipe, short_link=code)
+    try:
+        recipe = get_object_or_404(Recipe, short_link=code)
 
-    return redirect(f'/recipes/{recipe.id}/')
+        return redirect(f'/recipes/{recipe.id}/')
+    except Http404:
+        return redirect('/')

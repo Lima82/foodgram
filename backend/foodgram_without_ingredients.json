@@ -1,0 +1,1585 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-03-25T14:54:25.256Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "2",
+    "object_repr": "Суп-пюре с трюфельным маслом и сельдереем",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-03-25T14:54:25.256Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "1",
+    "object_repr": "Суп-пюре с трюфельным маслом и сельдереем",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-03-25T15:05:11.260Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "3",
+    "object_repr": "Суп-пюре с трюфельным маслом и сельдереем",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-03-26T09:37:06.333Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "7",
+    "object_repr": "Торт Колибри",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-03-26T10:10:16.541Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "14",
+    "object_repr": "Спагетти карбонара",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\", \"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435 \\u0440\\u0435\\u0446\\u0435\\u043f\\u0442\\u0430\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-03-26T10:36:16.716Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "8",
+    "object_repr": "testuser",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-03-26T10:53:22.820Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "9",
+    "object_repr": "testuser",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-03-26T11:19:46.940Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "10",
+    "object_repr": "postman",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-03-31T13:53:45.577Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "13",
+    "object_repr": "Говядина Веллингтон",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\", \"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435 \\u0440\\u0435\\u0446\\u0435\\u043f\\u0442\\u0430\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-03-31T13:53:58.453Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "12",
+    "object_repr": "Бефстроганов",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\", \"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435 \\u0440\\u0435\\u0446\\u0435\\u043f\\u0442\\u0430\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-03-31T13:54:14.630Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "11",
+    "object_repr": "Картофельная тортилья",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\", \"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435 \\u0440\\u0435\\u0446\\u0435\\u043f\\u0442\\u0430\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-03-31T13:55:53.864Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "15",
+    "object_repr": "Омлет с сыром",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-03-31T13:56:17.026Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "10",
+    "object_repr": "Торт Колибри",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\", \"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435 \\u0440\\u0435\\u0446\\u0435\\u043f\\u0442\\u0430\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-03-31T13:56:26.862Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "9",
+    "object_repr": "Рубленые котлеты из лосося и трески",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\", \"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435 \\u0440\\u0435\\u0446\\u0435\\u043f\\u0442\\u0430\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-03-31T13:56:37.191Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "8",
+    "object_repr": "Малиновый мусс",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\", \"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435 \\u0440\\u0435\\u0446\\u0435\\u043f\\u0442\\u0430\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-03-31T13:56:47.774Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "6",
+    "object_repr": "Пицца - основной рецепт",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\", \"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435 \\u0440\\u0435\\u0446\\u0435\\u043f\\u0442\\u0430\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2026-03-31T13:57:00.024Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "4",
+    "object_repr": "Суп-пюре с трюфельным маслом и сельдереем",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435\", \"\\u041e\\u043f\\u0438\\u0441\\u0430\\u043d\\u0438\\u0435 \\u0440\\u0435\\u0446\\u0435\\u043f\\u0442\\u0430\"]}}]"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "iix3hoprqdc3qa18bev4023p2z31xm62",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAUBf-FtSEgYItL934DudyHVA0kpV0Z_12bdKHbMzPnpRKsS0lr5zlNpM7KqsPvlgEfXDdAd6i3prHVZZ6y3hS9066vjfh52d2_gwK9fGuhDEOQACRO0MdgBZHZnvLoxgjO5DCgBXbBgBzRZ--jBWJAI-BNVO8PIZA5QA:1w7ZW0:HsTulYeduTtKer7saL54FxH4AOaeOGaA7Bglg4te6D8",
+    "expire_date": "2026-04-14T13:52:20.697Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "rd7i4t7f1ybd12ege2163uja3cewj4us",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAUBf-FtSEgYItL934DudyHVA0kpV0Z_12bdKHbMzPnpRKsS0lr5zlNpM7KqsPvlgEfXDdAd6i3prHVZZ6y3hS9066vjfh52d2_gwK9fGuhDEOQACRO0MdgBZHZnvLoxgjO5DCgBXbBgBzRZ--jBWJAI-BNVO8PIZA5QA:1w5P1G:YSL0tHg2FKvPvo2nlo7QRVaev-TF3wthEsGWwUj0vos",
+    "expire_date": "2026-04-08T14:15:38.774Z"
+  }
+},
+{
+  "model": "authtoken.token",
+  "pk": "57c24c78137bd0469fef2328b01c6ba0471c760e",
+  "fields": {
+    "user": 11,
+    "created": "2026-03-26T11:21:09.016Z"
+  }
+},
+{
+  "model": "authtoken.token",
+  "pk": "7d511c0b01e049eec89579b4b3a11d47eed9d4c5",
+  "fields": {
+    "user": 12,
+    "created": "2026-03-31T13:51:22.660Z"
+  }
+},
+{
+  "model": "authtoken.token",
+  "pk": "b3f99436b47e18c6c40025aae127853927c82cde",
+  "fields": {
+    "user": 1,
+    "created": "2026-03-31T14:05:17.057Z"
+  }
+},
+{
+  "model": "authtoken.token",
+  "pk": "fcaa185dc4277c6afd1f254d19d4d0cf4602595c",
+  "fields": {
+    "user": 13,
+    "created": "2026-03-31T13:51:21.748Z"
+  }
+},
+{
+  "model": "recipes.tag",
+  "pk": 1,
+  "fields": {
+    "name": "Шеф-повар",
+    "slug": "chef"
+  }
+},
+{
+  "model": "recipes.tag",
+  "pk": 2,
+  "fields": {
+    "name": "Супы",
+    "slug": "soups"
+  }
+},
+{
+  "model": "recipes.tag",
+  "pk": 3,
+  "fields": {
+    "name": "Закуски",
+    "slug": "appetizers"
+  }
+},
+{
+  "model": "recipes.tag",
+  "pk": 4,
+  "fields": {
+    "name": "Вторые блюда",
+    "slug": "main-courses"
+  }
+},
+{
+  "model": "recipes.tag",
+  "pk": 5,
+  "fields": {
+    "name": "Пицца",
+    "slug": "pizza"
+  }
+},
+{
+  "model": "recipes.tag",
+  "pk": 6,
+  "fields": {
+    "name": "Салаты",
+    "slug": "salads"
+  }
+},
+{
+  "model": "recipes.tag",
+  "pk": 7,
+  "fields": {
+    "name": "Пироги",
+    "slug": "pies"
+  }
+},
+{
+  "model": "recipes.tag",
+  "pk": 8,
+  "fields": {
+    "name": "Торты и пирожные",
+    "slug": "cakes"
+  }
+},
+{
+  "model": "recipes.tag",
+  "pk": 9,
+  "fields": {
+    "name": "Соусы и приправы",
+    "slug": "sauces"
+  }
+},
+{
+  "model": "recipes.tag",
+  "pk": 10,
+  "fields": {
+    "name": "Напитки",
+    "slug": "drinks"
+  }
+},
+{
+  "model": "recipes.tag",
+  "pk": 11,
+  "fields": {
+    "name": "Десерты",
+    "slug": "desserts"
+  }
+},
+{
+  "model": "recipes.tag",
+  "pk": 12,
+  "fields": {
+    "name": "Блюда из мяса",
+    "slug": "meat-dishes"
+  }
+},
+{
+  "model": "recipes.tag",
+  "pk": 13,
+  "fields": {
+    "name": "Блюда из рыбы",
+    "slug": "fish-dishes"
+  }
+},
+{
+  "model": "recipes.tag",
+  "pk": 14,
+  "fields": {
+    "name": "Гриль и барбекю",
+    "slug": "grill"
+  }
+},
+{
+  "model": "recipes.tag",
+  "pk": 15,
+  "fields": {
+    "name": "Завтрак",
+    "slug": "breakfast"
+  }
+},
+{
+  "model": "recipes.tag",
+  "pk": 16,
+  "fields": {
+    "name": "Обед",
+    "slug": "lunch"
+  }
+},
+{
+  "model": "recipes.tag",
+  "pk": 17,
+  "fields": {
+    "name": "Ужин",
+    "slug": "dinner"
+  }
+},
+{
+  "model": "recipes.tag",
+  "pk": 18,
+  "fields": {
+    "name": "Десерт",
+    "slug": "dessert"
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 4,
+  "fields": {
+    "author": 5,
+    "name": "Суп-пюре с трюфельным маслом и сельдереем",
+    "image": "recipes/images/Суп-пюре_с_трюфельным_маслом_и_сельдереем_crpo2hH.jpg",
+    "text": "Чрезвычайно согреет зимой.\r\n\r\n1. В подходящего размера кастрюле, медленно обжарьте лук в оливковом масле примерно 5 минут, пока он не станет прозрачным и мягким.\r\n2. Возьмите пучок тимьяна, свяжите его маленькой веревочкой и добавьте в кастрюлю вместе сельдереем и порезанным на кубики картофелем.\r\n3. Сюда же вылейте бульон. Доведите до кипения и варите в течение 40 минут, пока овощи не станут мягкими.\r\n4. Добавьте сливки, доведите до кипения, затем вытащите тимьян.\r\n5. Вылейте все из кастрюли в блендер и хорошо перемешайте в пюре. Разлейте суп по тарелкам.\r\n6. По вкусу добавьте трюфельное масло, примерно по одной столовой ложке на тарелку.",
+    "cooking_time": 60,
+    "pub_date": "2026-03-25T15:05:34.109Z",
+    "short_link": null,
+    "tags": [
+      16,
+      2,
+      1
+    ]
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 6,
+  "fields": {
+    "author": 5,
+    "name": "Пицца - основной рецепт",
+    "image": "recipes/images/Пицца_с_томатным_соусом_7Jbds3n.jpg",
+    "text": "Вкусное тесто и томатный соус.\r\n\r\nТесто:\r\n1. Высыпьте муку и соль на чистую поверхность и освободите место в центре диаметром примерно 18 сантиметров. В емкость с теплой водой добавьте дрожжи и сахар, перемешайте вилкой и оставьте на несколько минут, затем вылейте в приготовленную полость.\r\n2. При помощи вилки, применяя круговые движения, начиная от центра, медленно перемешайте муку с водой. В итоге у вас получится нечто напоминающее густую кашу. Когда компоненты хорошо перемешаются и тесто станет тяжело мешать вилкой, обмакните руки в муке и скатайте тесто в шар.\r\n3. Месите тесто катая его назад и вперед. Используя левую руку, растягивайте тесто к себе и одновременно правой рукой толкайте тесто от вас. Повторите это в течение 10 минут, пока у Вас не будет гладкого, эластичного, мягкого теста.\r\n4. Поместите тесто в слегка смазанную маслом миску. Накройте кухонным полотенцем или полиэтиленовой пленкой и дайте ему увеличится в размере минимум в два раза, это займет около 45 минут.\r\n\r\nТоматный соус:\r\n5. Очистите и мелко нарежьте чеснок. Сорвите листья базилика и выбросите стебли. Нагрейте кастрюлю на среднем огне и добавьте оливкового масла и чеснока. Готовьте на медленном огне, пока чеснок не начнет становиться золотым, затем добавьте большинство листьев базилика, помидоры, и хорошую щепотку соли и перец.\r\n6. Готовьте на медленном огне около 20 минут, или до получения однородной массы, смяв помидоры деревянной ложкой, пока они варятся.\r\n\r\nСборка пиццы:\r\n7. Разделите тесто на две части. Оберните одну половину в полиэтиленовую пленку и заморозьте на следующий раз. Оставшуюся половину разделите на 4 шара. Посыпьте мукой, накройте каждый шарик полиэтиленовой пленкой и дайте отдохнуть в течение 15 минут.\r\n8. Возьмите кусок теста, посыпьте поверхность доски небольшим количеством муки, и раскатайте в грубый круг толщиной около 0.5 см.\r\n9. Разогрейте духовку до 250°C. Смажьте маслом противни. Намажьте тесто соусом. Посыпьте моцареллой и листьями базилика. Полейте оливковым маслом, добавьте соль и перец.\r\n10. Выпекайте 7-10 минут до золотистого цвета.",
+    "cooking_time": 80,
+    "pub_date": "2026-03-26T08:33:38.866Z",
+    "short_link": null,
+    "tags": [
+      16,
+      5,
+      17,
+      1
+    ]
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 8,
+  "fields": {
+    "author": 7,
+    "name": "Малиновый мусс",
+    "image": "recipes/images/Малиновыи_мусс_HcuBmZK.jpg",
+    "text": "Этот десерт фантастический — легкий, свежий и очень простой.\r\n\r\nШаг 1. Желатин замочить в холодной воде, затем промокнуть бумажным полотенцем.\r\nШаг 2. Малину разморозить, взбить блендером и протереть через сито.\r\nШаг 3. Сотейник с малиновым пюре поставить на огонь, всыпать сахар и прогревать, пока он полностью не растворится.\r\nШаг 4. Снять с огня, добавить желатин, помешивая дать раствориться, затем остудить.\r\nШаг 5. Сливки взбить в пышную массу и в несколько приемов вмешать в малиновую массу.\r\nШаг 6. Разложить массу в стаканы на 2/3 объема, убрать в холодильник на 40 минут.\r\nШаг 7. Украсить свежей малиной.",
+    "cooking_time": 20,
+    "pub_date": "2026-03-26T09:30:24.213Z",
+    "short_link": null,
+    "tags": [
+      18,
+      8,
+      1
+    ]
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 9,
+  "fields": {
+    "author": 7,
+    "name": "Рубленые котлеты из лосося и трески",
+    "image": "recipes/images/Рубленые_котлеты_из_лосося_и_трески_gqkdVqD.jpg",
+    "text": "Рыбные котлетки любят взрослые и детки!\r\n\r\nШаг 1. Булку нарезать кусочками и подсушить в духовке, затем измельчить блендером в панировочные сухари.\r\nШаг 2. Половину рыбы нарезать небольшими кусочками.\r\nШаг 3. Шалот почистить и нарезать.\r\nШаг 4. В чашу блендера выложить нарезанную рыбу и лук, все немного посолить, поперчить, влить 1 ст. ложку ледяной воды и взбить.\r\nШаг 5. Оставшуюся рыбу нарезать очень маленькими кусочками.\r\nШаг 6. Зеленый лук мелко порубить.\r\nШаг 7. В глубокой миске соединить всю рыбу, зеленый лук, посолить, поперчить, влить 1 ст. ложку ледяной воды и перемешать. Сформировать из фарша котлеты и обвалять их в панировочных сухарях.\r\nШаг 8. Разогреть в сковороде сливочное и растительное масло и обжаривать котлеты с одной стороны до появления румяной корочки, затем перевернуть, накрыть крышкой и жарить до готовности.",
+    "cooking_time": 30,
+    "pub_date": "2026-03-26T09:34:47.122Z",
+    "short_link": null,
+    "tags": [
+      13,
+      4,
+      1
+    ]
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 10,
+  "fields": {
+    "author": 5,
+    "name": "Торт Колибри",
+    "image": "recipes/images/Торт_Колибри_5nzMA3O.jpg",
+    "text": "Побалуйте себя!\r\n\r\n1. Предварительно разогрейте духовку до 180°C.\r\n2. Просейте в глубокую миску самоподнимающуюся муку, добавьте корицу, сахар, щепотку соли и покрошите 50 г орехов пекан.\r\n3. Очистите бананы и разомните вилкой в другой миске.\r\n4. Слейте сироп с ананасов, нарежьте ананасы на мелкие кусочки, добавьте к бананам. Добавьте оливковое масло, ванильный экстракт и яйца.\r\n5. Хорошо перемешайте сухую и влажную смеси до однородности.\r\n6. Возьмите две формы для выпекания диаметром 23 см, застелите бумагой, смажьте маслом.\r\n7. Разделите тесто на две части, вылейте в формы. Выпекайте 35-40 минут при 180°C.\r\n8. Для глазури: взбейте сливочное масло, сливочный сыр и сахарную пудру до однородности. Добавьте цедру и сок лайма, перемешайте.\r\n9. Для посыпки: в сковороде нагрейте сахарную пудру с ананасовым сиропом до золотистой карамели, добавьте орехи пекан и щепотку соли, вылейте на бумагу, дайте остыть, затем измельчите.\r\n10. Соберите торт: первый бисквит, половина глазури, второй бисквит, оставшаяся глазурь, посыпьте карамельной крошкой.",
+    "cooking_time": 60,
+    "pub_date": "2026-03-26T09:36:43.756Z",
+    "short_link": null,
+    "tags": [
+      18,
+      8,
+      1
+    ]
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 11,
+  "fields": {
+    "author": 7,
+    "name": "Картофельная тортилья",
+    "image": "recipes/images/Картофельная_тортилья_LPNVgRZ.jpg",
+    "text": "Картофель можно использовать и вареный, оставшийся в холодильнике со вчерашнего дня, но с жареным, конечно же, получается вкуснее.\r\n\r\nШаг 1. Картофель почистить и замочить на час в холодной воде, затем нарезать тонкими кружками.\r\nШаг 2. Разогреть в сковороде 1 ст. ложку оливкового масла, выложить картофель, накрыть крышкой и, периодически перемешивая, обжаривать на маленьком огне практически до готовности, затем переложить на бумажное полотенце.\r\nШаг 3. Луковицу почистить и нарезать полукольцами.\r\nШаг 4. Разогреть в сковороде оставшееся оливковое масло, выложить лук, слегка посолить и обжарить до мягкости, затем добавить картофель и все прогреть.\r\nШаг 5. Яйца разбить в миску, посолить, поперчить, перемешать венчиком и влить в сковороду с картофелем и луком, накрыть крышкой и готовить пару минут.\r\nШаг 6. Отправить сковороду с тортильей в духовку под разогретый гриль на 3–5 минут.\r\nШаг 7. Шнитт-лук мелко порубить и посыпать готовую тортилью.",
+    "cooking_time": 20,
+    "pub_date": "2026-03-26T09:42:05.785Z",
+    "short_link": null,
+    "tags": [
+      4,
+      15,
+      1
+    ]
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 12,
+  "fields": {
+    "author": 6,
+    "name": "Бефстроганов",
+    "image": "recipes/images/Бефстроганов_N9fdOM6.jpg",
+    "text": "Блюдо названо в честь графа Александра Строганова. По легенде его придумал служивший у Строганова французский повар Андре Дюпон.\r\n\r\n1. Приправьте кусочки говядины солью и перцем. Положите говядину в нагретую сковороду и готовьте по 2-3 минуты с каждой стороны или пока она не подрумянится. После чего достаньте мясо и отложите в сторону, чтобы оно остыло.\r\n2. Мелко нарежьте лук, грибы и чеснок, обжарьте их в той же сковороде – пока они не станут мягкими, а жидкость не испарится (на это уйдет примерно 5-7 минут).\r\n3. Добавьте томатную пасту, говяжий бульон и вустерширский соус и доведите смесь до кипения.\r\n4. Уменьшите огонь до минимума и положите говядину обратно в сковороду. Тушите все вместе на медленном огне 5-10 минут, пока соус не загустеет.\r\n5. Добавьте сметану и украсьте блюдо нарезанной свежей петрушкой. Подавайте горячим и со сваренной яичной лапшой.",
+    "cooking_time": 40,
+    "pub_date": "2026-03-26T09:49:29.358Z",
+    "short_link": "wmp8Wd",
+    "tags": [
+      12,
+      4,
+      1
+    ]
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 13,
+  "fields": {
+    "author": 6,
+    "name": "Говядина Веллингтон",
+    "image": "recipes/images/Говядина_Веллингтон_49OsYPh.jpg",
+    "text": "Говядина Веллингтон – это праздничное блюдо из говяжьей вырезки.\r\n\r\n1. Разогрейте духовку до 200°C.\r\n2. Приправьте говяжью вырезку солью и перцем.\r\n3. Нагрейте оливковое масло в большой сковороде на сильном огне. Обжарьте мясо по 2-3 минуты с каждой стороны до румяной корочки. Снимите и отложите остывать.\r\n4. Лук и грибы мелко нашинкуйте. В той же сковороде растопите сливочное масло, обжарьте лук и грибы 5-7 минут, пока жидкость не испарится.\r\n5. Добавьте вустерширский соус и дижонскую горчицу, перемешайте.\r\n6. Раскатайте слоеное тесто. Выложите в центр говядину, сверху грибную массу. Края теста смажьте взбитым яйцом, защипните.\r\n7. Поместите рулет на противень, смажьте яйцом. Выпекайте 20-25 минут до золотистого цвета.",
+    "cooking_time": 50,
+    "pub_date": "2026-03-26T10:03:34.220Z",
+    "short_link": "p2rOlz",
+    "tags": [
+      12,
+      4,
+      1
+    ]
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 14,
+  "fields": {
+    "author": 6,
+    "name": "Спагетти карбонара",
+    "image": "recipes/images/Спагетти_карбонара.jpg",
+    "text": "Это блюдо изобрели в середине XX века.\r\n\r\n1. Доведите до кипения подсоленную воду в большой кастрюле и отварите спагетти по инструкции.\r\n2. В небольшой миске взбейте яйца и добавьте тертый пармезан.\r\n3. На среднем огне обжарьте бекон до хрустящей корочки (5-7 минут). Добавьте чеснок, готовьте 1-2 минуты.\r\n4. Влейте сливки, доведите до кипения. Уменьшите огонь, добавьте яичную смесь, постоянно помешивая, пока соус не загустеет.\r\n5. Слейте воду из спагетти, добавьте в сковороду с соусом, перемешайте.\r\n6. Украсьте петрушкой и подавайте горячим.",
+    "cooking_time": 25,
+    "pub_date": "2026-03-26T10:08:17.999Z",
+    "short_link": null,
+    "tags": [
+      4,
+      1
+    ]
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 114,
+  "fields": {
+    "recipe": 4,
+    "ingredient": 5279,
+    "amount": 1
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 115,
+  "fields": {
+    "recipe": 4,
+    "ingredient": 5563,
+    "amount": 60
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 116,
+  "fields": {
+    "recipe": 4,
+    "ingredient": 6249,
+    "amount": 20
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 117,
+  "fields": {
+    "recipe": 4,
+    "ingredient": 6004,
+    "amount": 500
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 118,
+  "fields": {
+    "recipe": 4,
+    "ingredient": 4957,
+    "amount": 500
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 119,
+  "fields": {
+    "recipe": 4,
+    "ingredient": 5195,
+    "amount": 1100
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 120,
+  "fields": {
+    "recipe": 4,
+    "ingredient": 6034,
+    "amount": 100
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 121,
+  "fields": {
+    "recipe": 4,
+    "ingredient": 6088,
+    "amount": 1
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 122,
+  "fields": {
+    "recipe": 4,
+    "ingredient": 5686,
+    "amount": 1
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 123,
+  "fields": {
+    "recipe": 4,
+    "ingredient": 6277,
+    "amount": 56
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 124,
+  "fields": {
+    "recipe": 10,
+    "ingredient": 5563,
+    "amount": 250
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 125,
+  "fields": {
+    "recipe": 10,
+    "ingredient": 5490,
+    "amount": 350
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 126,
+  "fields": {
+    "recipe": 10,
+    "ingredient": 5087,
+    "amount": 2
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 127,
+  "fields": {
+    "recipe": 10,
+    "ingredient": 5947,
+    "amount": 350
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 128,
+  "fields": {
+    "recipe": 10,
+    "ingredient": 4498,
+    "amount": 500
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 129,
+  "fields": {
+    "recipe": 10,
+    "ingredient": 4429,
+    "amount": 425
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 130,
+  "fields": {
+    "recipe": 10,
+    "ingredient": 6582,
+    "amount": 100
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 131,
+  "fields": {
+    "recipe": 10,
+    "ingredient": 4582,
+    "amount": 5
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 132,
+  "fields": {
+    "recipe": 10,
+    "ingredient": 6047,
+    "amount": 150
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 133,
+  "fields": {
+    "recipe": 10,
+    "ingredient": 6186,
+    "amount": 200
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 134,
+  "fields": {
+    "recipe": 10,
+    "ingredient": 5954,
+    "amount": 500
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 135,
+  "fields": {
+    "recipe": 10,
+    "ingredient": 5218,
+    "amount": 100
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 136,
+  "fields": {
+    "recipe": 10,
+    "ingredient": 5575,
+    "amount": 50
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 137,
+  "fields": {
+    "recipe": 8,
+    "ingredient": 5338,
+    "amount": 250
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 138,
+  "fields": {
+    "recipe": 8,
+    "ingredient": 5337,
+    "amount": 30
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 139,
+  "fields": {
+    "recipe": 8,
+    "ingredient": 5947,
+    "amount": 80
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 140,
+  "fields": {
+    "recipe": 8,
+    "ingredient": 4813,
+    "amount": 8
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 141,
+  "fields": {
+    "recipe": 8,
+    "ingredient": 6039,
+    "amount": 220
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 142,
+  "fields": {
+    "recipe": 8,
+    "ingredient": 5948,
+    "amount": 12
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 143,
+  "fields": {
+    "recipe": 6,
+    "ingredient": 5483,
+    "amount": 800
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 144,
+  "fields": {
+    "recipe": 6,
+    "ingredient": 5799,
+    "amount": 200
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 145,
+  "fields": {
+    "recipe": 6,
+    "ingredient": 6088,
+    "amount": 15
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 146,
+  "fields": {
+    "recipe": 6,
+    "ingredient": 5954,
+    "amount": 12
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 147,
+  "fields": {
+    "recipe": 6,
+    "ingredient": 4653,
+    "amount": 650
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 148,
+  "fields": {
+    "recipe": 6,
+    "ingredient": 4804,
+    "amount": 14
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 149,
+  "fields": {
+    "recipe": 6,
+    "ingredient": 6456,
+    "amount": 5
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 150,
+  "fields": {
+    "recipe": 6,
+    "ingredient": 4480,
+    "amount": 20
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 151,
+  "fields": {
+    "recipe": 6,
+    "ingredient": 5563,
+    "amount": 30
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 152,
+  "fields": {
+    "recipe": 6,
+    "ingredient": 5748,
+    "amount": 400
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 153,
+  "fields": {
+    "recipe": 6,
+    "ingredient": 5686,
+    "amount": 1
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 154,
+  "fields": {
+    "recipe": 6,
+    "ingredient": 5478,
+    "amount": 85
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 155,
+  "fields": {
+    "recipe": 9,
+    "ingredient": 6274,
+    "amount": 600
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 156,
+  "fields": {
+    "recipe": 9,
+    "ingredient": 5272,
+    "amount": 400
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 157,
+  "fields": {
+    "recipe": 9,
+    "ingredient": 4558,
+    "amount": 50
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 158,
+  "fields": {
+    "recipe": 9,
+    "ingredient": 5291,
+    "amount": 30
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 159,
+  "fields": {
+    "recipe": 9,
+    "ingredient": 5820,
+    "amount": 30
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 160,
+  "fields": {
+    "recipe": 9,
+    "ingredient": 6047,
+    "amount": 15
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 161,
+  "fields": {
+    "recipe": 9,
+    "ingredient": 5686,
+    "amount": 1
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 162,
+  "fields": {
+    "recipe": 9,
+    "ingredient": 6088,
+    "amount": 3
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 163,
+  "fields": {
+    "recipe": 14,
+    "ingredient": 6114,
+    "amount": 400
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 164,
+  "fields": {
+    "recipe": 14,
+    "ingredient": 6581,
+    "amount": 200
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 165,
+  "fields": {
+    "recipe": 14,
+    "ingredient": 5611,
+    "amount": 100
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 166,
+  "fields": {
+    "recipe": 14,
+    "ingredient": 4521,
+    "amount": 150
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 167,
+  "fields": {
+    "recipe": 14,
+    "ingredient": 6456,
+    "amount": 5
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 168,
+  "fields": {
+    "recipe": 14,
+    "ingredient": 6038,
+    "amount": 120
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 169,
+  "fields": {
+    "recipe": 14,
+    "ingredient": 5707,
+    "amount": 10
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 201,
+  "fields": {
+    "recipe": 11,
+    "ingredient": 4957,
+    "amount": 500
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 202,
+  "fields": {
+    "recipe": 11,
+    "ingredient": 6581,
+    "amount": 360
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 203,
+  "fields": {
+    "recipe": 11,
+    "ingredient": 5287,
+    "amount": 80
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 204,
+  "fields": {
+    "recipe": 11,
+    "ingredient": 6492,
+    "amount": 15
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 205,
+  "fields": {
+    "recipe": 11,
+    "ingredient": 5563,
+    "amount": 30
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 206,
+  "fields": {
+    "recipe": 11,
+    "ingredient": 5686,
+    "amount": 1
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 207,
+  "fields": {
+    "recipe": 11,
+    "ingredient": 6088,
+    "amount": 5
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 208,
+  "fields": {
+    "recipe": 12,
+    "ingredient": 4689,
+    "amount": 450
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 209,
+  "fields": {
+    "recipe": 12,
+    "ingredient": 6088,
+    "amount": 3
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 210,
+  "fields": {
+    "recipe": 12,
+    "ingredient": 5686,
+    "amount": 2
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 211,
+  "fields": {
+    "recipe": 12,
+    "ingredient": 6047,
+    "amount": 40
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 212,
+  "fields": {
+    "recipe": 12,
+    "ingredient": 5287,
+    "amount": 80
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 213,
+  "fields": {
+    "recipe": 12,
+    "ingredient": 4763,
+    "amount": 220
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 214,
+  "fields": {
+    "recipe": 12,
+    "ingredient": 6456,
+    "amount": 5
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 215,
+  "fields": {
+    "recipe": 12,
+    "ingredient": 6254,
+    "amount": 20
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 216,
+  "fields": {
+    "recipe": 12,
+    "ingredient": 5501,
+    "amount": 240
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 217,
+  "fields": {
+    "recipe": 12,
+    "ingredient": 4659,
+    "amount": 15
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 218,
+  "fields": {
+    "recipe": 12,
+    "ingredient": 6054,
+    "amount": 60
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 219,
+  "fields": {
+    "recipe": 12,
+    "ingredient": 5707,
+    "amount": 10
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 220,
+  "fields": {
+    "recipe": 12,
+    "ingredient": 5226,
+    "amount": 200
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 221,
+  "fields": {
+    "recipe": 13,
+    "ingredient": 4689,
+    "amount": 1000
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 222,
+  "fields": {
+    "recipe": 13,
+    "ingredient": 5563,
+    "amount": 30
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 223,
+  "fields": {
+    "recipe": 13,
+    "ingredient": 6088,
+    "amount": 5
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 224,
+  "fields": {
+    "recipe": 13,
+    "ingredient": 5686,
+    "amount": 3
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 225,
+  "fields": {
+    "recipe": 13,
+    "ingredient": 6047,
+    "amount": 20
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 226,
+  "fields": {
+    "recipe": 13,
+    "ingredient": 5287,
+    "amount": 80
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 227,
+  "fields": {
+    "recipe": 13,
+    "ingredient": 4763,
+    "amount": 200
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 228,
+  "fields": {
+    "recipe": 13,
+    "ingredient": 4659,
+    "amount": 15
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 229,
+  "fields": {
+    "recipe": 13,
+    "ingredient": 4716,
+    "amount": 15
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 230,
+  "fields": {
+    "recipe": 13,
+    "ingredient": 6240,
+    "amount": 250
+  }
+},
+{
+  "model": "recipes.recipecomposition",
+  "pk": 231,
+  "fields": {
+    "recipe": 13,
+    "ingredient": 6581,
+    "amount": 50
+  }
+},
+{
+  "model": "recipes.favorite",
+  "pk": 3,
+  "fields": {
+    "user": 1,
+    "recipe": 13
+  }
+},
+{
+  "model": "recipes.shoppingcart",
+  "pk": 3,
+  "fields": {
+    "user": 11,
+    "recipe": 10
+  }
+},
+{
+  "model": "recipes.shoppingcart",
+  "pk": 4,
+  "fields": {
+    "user": 11,
+    "recipe": 8
+  }
+},
+{
+  "model": "recipes.shoppingcart",
+  "pk": 5,
+  "fields": {
+    "user": 11,
+    "recipe": 12
+  }
+},
+{
+  "model": "recipes.shoppingcart",
+  "pk": 6,
+  "fields": {
+    "user": 11,
+    "recipe": 13
+  }
+},
+{
+  "model": "recipes.shoppingcart",
+  "pk": 9,
+  "fields": {
+    "user": 1,
+    "recipe": 12
+  }
+},
+{
+  "model": "recipes.shoppingcart",
+  "pk": 10,
+  "fields": {
+    "user": 1,
+    "recipe": 13
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$NawH6ohpFxtxZhHppCdWY9$HQUkR9fwkSNHmyS79cyta9A4jg2EHB8eFm92mbe/iw0=",
+    "last_login": "2026-03-31T14:05:17.061Z",
+    "is_superuser": true,
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-03-25T12:42:30.725Z",
+    "username": "marina",
+    "email": "marina.a.orlenko@gmail.com",
+    "first_name": "",
+    "last_name": "",
+    "avatar": "",
+    "role": "auth_user",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$q0RKZJ19qUrBHqfA8efvtE$x7km9Zjv8DuuLxX9BUFWhZXrMCMGdNQ5/CzDDzW1nZs=",
+    "last_login": null,
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-25T12:49:53.954Z",
+    "username": "jamie_oliver",
+    "email": "jamie@example.com",
+    "first_name": "Джейми",
+    "last_name": "Оливер",
+    "avatar": "",
+    "role": "auth_user",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$hrOyiQfdXPYIjROdIGNskf$W51DmnSdlwRH0C5MGeVeBC3eDpd2a6bu9V+aeWunESc=",
+    "last_login": null,
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-25T12:49:54.245Z",
+    "username": "gordon_ramsay",
+    "email": "gordon@example.com",
+    "first_name": "Гордон",
+    "last_name": "Рамзи",
+    "avatar": "",
+    "role": "auth_user",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$2A7WYAPBC1pivJcdaOt25u$tprd76sZLL007xwxN+qiZaYVzeMH3rQfHxBcJp3ZdNA=",
+    "last_login": null,
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-25T12:49:54.501Z",
+    "username": "yulia_vysotskaya",
+    "email": "yulia@example.com",
+    "first_name": "Юлия",
+    "last_name": "Высоцкая",
+    "avatar": "",
+    "role": "auth_user",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 11,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$q7bCWOhzqfXzQwiTKBMpFR$hprw/RQdohc2p8IURbFeoiYWNECppTACcSn0farOpbQ=",
+    "last_login": "2026-03-26T11:21:09.017Z",
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-26T11:20:40.377Z",
+    "username": "apitest",
+    "email": "api@example.com",
+    "first_name": "API",
+    "last_name": "Test",
+    "avatar": "",
+    "role": "auth_user",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 12,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$4YB5l98fF276rB4Ys8SHnT$5HWOiIOG4aSOPFJF0LMM3crA5m+czXhLUL0TJk3oArI=",
+    "last_login": "2026-03-31T13:51:24.813Z",
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-31T13:51:20.180Z",
+    "username": "vasya.ivanov",
+    "email": "vivanov@yandex.ru",
+    "first_name": "Вася",
+    "last_name": "Иванов",
+    "avatar": "",
+    "role": "auth_user",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 13,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$RoUlM8nIgVcsbJkOQQSyRA$7VLLDN43q8B+Og7Dk06dn2t/fp4G1qwSf2/gT0Tg+ZU=",
+    "last_login": "2026-03-31T13:51:21.749Z",
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-31T13:51:20.569Z",
+    "username": "second-user",
+    "email": "second_user@email.org",
+    "first_name": "Андрей",
+    "last_name": "Макаревский",
+    "avatar": "",
+    "role": "auth_user",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 14,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$2WUSo7eThcKimx9zT2dGKb$tiPQnblRlguHAsylzr3rnohlxbwj+LQME6gDZD1CXj8=",
+    "last_login": null,
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-31T13:51:20.876Z",
+    "username": "third-user-username",
+    "email": "third-user@user.ru",
+    "first_name": "Гордон",
+    "last_name": "Рамзиков",
+    "avatar": "",
+    "role": "auth_user",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.subscription",
+  "pk": 5,
+  "fields": {
+    "user": 1,
+    "author": 6,
+    "created_at": "2026-03-31T14:39:56.418Z"
+  }
+}
+]
