@@ -203,7 +203,6 @@ jobs:
             sudo docker compose -f docker-compose.production.yml exec backend python manage.py migrate
             sudo docker compose -f docker-compose.production.yml exec backend python manage.py collectstatic --no-input
             sudo docker compose -f docker-compose.production.yml exec backend python manage.py load_ingredients
-      #      sudo docker compose -f docker-compose.production.yml exec backend python manage.py loaddata foodgram_fixtures.json
             sudo docker compose -f docker-compose.production.yml ps
 
   send_message:
