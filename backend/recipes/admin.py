@@ -90,7 +90,7 @@ class FavoriteAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'recipe')
     search_fields = ('user__username', 'recipe__name')
 
-    @admin.action(description="Удалить выбранные избранные")
+    @admin.action(description="Удалить из избранного")
     def delete_selected(self, request, queryset):
         count = queryset.count()
         queryset.delete()
@@ -108,7 +108,7 @@ class ShoppingCartAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'recipe')
     search_fields = ('user__username', 'recipe__name')
 
-    @admin.action(description="Удалить выбранные покупки")
+    @admin.action(description="Удалить из списка покупок")
     def delete_selected(self, request, queryset):
         count = queryset.count()
         queryset.delete()
