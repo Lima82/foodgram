@@ -1,5 +1,4 @@
 # Регулярные выражения
-TAG_SLUG_REGEX = r'?P<tag_slug>[^/.]+'
 USERNAME_REGEX = r'^[\w.@+-]+\Z'
 
 # Пользовательские роли

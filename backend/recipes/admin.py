@@ -15,7 +15,7 @@ from recipes.models import (
 class TagAdmin(admin.ModelAdmin):
     """Настройки админки  для тегов."""
 
-    list_display = ('id', 'name', 'slug')  # добавлено id
+    list_display = ('id', 'name', 'slug')
     search_fields = ('name',)
     prepopulated_fields = {'slug': ('name',)}
 
@@ -23,7 +23,7 @@ class TagAdmin(admin.ModelAdmin):
 class IngredientAdmin(admin.ModelAdmin):
     """Настройки админки  для игредиентов."""
 
-    list_display = ('id', 'name', 'measurement_unit')  # добавлено id
+    list_display = ('id', 'name', 'measurement_unit')
     search_fields = ('name',)
     list_filter = ('measurement_unit',)
 
@@ -43,10 +43,8 @@ class RecipeAdmin(admin.ModelAdmin):
         'id',
         'name',
         'author',
-        'get_tags',  # добавлено показываем теги
-        # 'image',  # убрано
-        'get_image_preview',  # добавлено показываем миниатюру
-        # 'text',  # убрано
+        'get_tags',
+        'get_image_preview',
         'favorite_count',
         'cooking_time',
         'pub_date'
@@ -60,14 +58,13 @@ class RecipeAdmin(admin.ModelAdmin):
         """Подсчет количества рецептов в избранном."""
         return super().get_queryset(request).annotate(
             favorite_count=Count('favorites', distinct=True)
-        ).prefetch_related('tags')  # добавлено для оптимизации запроса тегов
+        ).prefetch_related('tags')
 
     @admin.display(description='В избранном', ordering='favorite_count')
     def favorite_count(self, obj):
         """Подсчет, сколько раз рецепт был добавлен в избранное."""
         return obj.favorite_count
 
-    # добавляем
     @admin.display(description='Теги')
     def get_tags(self, obj):
         """Показывает теги в виде строки."""

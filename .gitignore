@@ -142,3 +142,5 @@ dmypy.json
 
 static/
 media/
+
+foodgram_fixtures.json

@@ -9,12 +9,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 if os.path.exists(BASE_DIR / '.env'):
     load_dotenv()
 
-# SECRET_KEY = 'django-insecure-)tujia+q(dte+49l!x#e$&p_05wl2pt)14t@1al*fms61pf1q^'
-
-# DEBUG = True
-
-# ALLOWED_HOSTS = ['localhost', '127.0.0.1', '158.160.222.87', 'orlm82.ddns.net', host.docker.internal]
-
 SECRET_KEY = os.getenv('SECRET_KEY', default=get_random_secret_key())
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
@@ -71,22 +65,6 @@ WSGI_APPLICATION = 'foodgram.wsgi.application'
 
 # Database
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv('POSTGRES_DB', 'django'),
-#         'USER': os.getenv('POSTGRES_USER', 'django'),
-#         'PASSWORD': os.getenv('POSTGRES_PASSWORD', ''),
-#         'HOST': os.getenv('DB_HOST', ''),
-#         'PORT': os.getenv('DB_PORT', 5432)
-#     }
-# }
 if DEBUG:
     DATABASES = {
         'default': {
@@ -138,20 +116,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = BASE_DIR / 'static'
-# STATIC_ROOT = '/backend_static/static/'
-# STATIC_ROOT = '/app/static'
 
 MEDIA_URL = '/media/'
-# MEDIA_ROOT = BASE_DIR / 'media'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# MEDIA_ROOT = '/app/media'
 
 if os.path.exists('/app'):
     STATIC_ROOT = '/app/static/'
     MEDIA_ROOT = '/app/media/'
 else:
-    # STATIC_ROOT = '/backend_static/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

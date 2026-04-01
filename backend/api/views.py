@@ -113,26 +113,6 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         """Фильтрует рецепты по параметрам запроса."""
-        # queryset = Recipe.objects.all()
-        # is_favorited = self.request.query_params.get('is_favorited')
-        # is_in_shopping_cart = self.request.query_params.get(
-        #     'is_in_shopping_cart'
-        # )
-        # # author = self.request.query_params.get('author')
-        # # tags = self.request.query_params.getlist('tags')
-
-        # if is_favorited == '1' and self.request.user.is_authenticated:
-        #     queryset = queryset.filter(favorites__user=self.request.user)
-        # if is_in_shopping_cart == '1' and self.request.user.is_authenticated:
-        #     queryset = queryset.filter(shopping_cart__user=self.request.user)
-        # # if author:
-        # #     queryset = queryset.filter(author_id=author)
-        # # if tags:
-        # #     queryset = queryset.filter(tags__slug__in=tags).distinct()
-
-        # return queryset.select_related('author').prefetch_related(
-        #     'tags', 'ingredients__ingredient'
-        # )
         queryset = Recipe.objects.all().select_related(
             'author'
         ).prefetch_related(
