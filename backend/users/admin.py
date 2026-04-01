@@ -19,7 +19,6 @@ class SubscriptionInline(admin.TabularInline):
     verbose_name_plural = 'Подписки'
 
 
-@admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
     """Настройка админки юзера."""
 
