@@ -19,7 +19,7 @@ class SubscriptionInline(admin.TabularInline):
     verbose_name_plural = 'Подписки'
 
 
-# @admin.register(CustomUser)
+@admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
     """Настройка админки юзера."""
 
@@ -57,14 +57,14 @@ class CustomUserAdmin(UserAdmin):
         """Возвращает количество подписок пользователя."""
         return obj.following_count
 
-    # @admin.action(description="Удалить выбранных пользователей")
-    # def delete_selected(self, request, queryset):
-    #     """Удаление выбранных пользователей"""
-    #     count = queryset.count()
-    #     queryset.delete()
-    #     self.message_user(request, f'Успешно удалено {count} пользователей.')
+    @admin.action(description="Удалить выбранных пользователей")
+    def delete_selected(self, request, queryset):
+        """Удаление выбранных пользователей"""
+        count = queryset.count()
+        queryset.delete()
+        self.message_user(request, f'Успешно удалено {count} пользователей.')
 
-    # actions = ['delete_selected']
+    actions = ['delete_selected']
 
 
 class SubscriptionAdmin(admin.ModelAdmin):
