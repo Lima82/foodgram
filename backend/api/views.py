@@ -361,7 +361,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
         return Response({'short-link': short_url})
 
-    @action(detail=False, methods=['get'], url_path='by-tag/{TAG_SLUG_REGEX}')
+    @action(detail=False, methods=['get'], url_path=f'by-tag/{TAG_SLUG_REGEX}')
     def by_tag(self, request, tag_slug=None):
         """Фильтрация по одному тегу"""
         from recipes.models import Tag
