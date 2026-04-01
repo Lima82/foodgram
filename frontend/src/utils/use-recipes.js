@@ -63,12 +63,12 @@
 // }
 import React, { useState, useEffect } from "react";
 import { useTags } from './index.js'
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import api from '../api'
 
 export default function useRecipes () {
   const location = useLocation();
-  const navigate = useNavigate();
+  const history = useHistory();
   
   const [ recipes, setRecipes ] = useState([])
   const [ recipesCount, setRecipesCount ] = useState(0)
@@ -103,7 +103,7 @@ export default function useRecipes () {
     });
     params.set('page', '1');
     
-    navigate(`/?${params.toString()}`);
+    history.push(`/?${params.toString()}`);
   };
 
   const handleLike = ({ id, toLike = true }) => {
