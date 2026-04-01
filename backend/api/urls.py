@@ -16,16 +16,3 @@ urlpatterns = [
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.authtoken')),
 ]
-
-urlpatterns += [
-    path(
-        'recipes/by-tag/<slug:tag_slug>/',
-        RecipeViewSet.as_view({'get': 'by_tag'}),
-        name='recipes-by-tag'
-    ),
-    path(
-        'recipes/by-tags/',
-        RecipeViewSet.as_view({'get': 'by_tags'}),
-        name='recipes-by-tags'
-    ),
-]

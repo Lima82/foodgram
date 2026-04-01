@@ -12,7 +12,6 @@ from rest_framework.permissions import (
 )
 from rest_framework.response import Response
 
-from api.constants import TAG_SLUG_REGEX
 from api.filters import RecipeFilter
 from api.pagination import CustomPageNumberPagination
 from api.permissions import IsAuthorOrReadOnly
@@ -360,62 +359,6 @@ class RecipeViewSet(viewsets.ModelViewSet):
         short_url = f'{domain}/s/{recipe.short_link}'
 
         return Response({'short-link': short_url})
-
-    @action(detail=False, methods=['get'], url_path=f'by-tag/{TAG_SLUG_REGEX}')
-    def by_tag(self, request, tag_slug=None):
-        """Фильтрация по одному тегу"""
-        from recipes.models import Tag
-        tag = get_object_or_404(Tag, slug=tag_slug)
-        recipes = Recipe.objects.filter(tags=tag).distinct()
-
-        page = self.paginate_queryset(recipes)
-        if page is not None:
-            serializer = RecipeListSerializer(
-                page,
-                many=True,
-                context={'request': request}
-            )
-            return self.get_paginated_response(serializer.data)
-
-        serializer = RecipeListSerializer(
-            recipes,
-            many=True,
-            context={'request': request}
-        )
-        return Response(serializer.data)
-
-    @action(detail=False, methods=['get'], url_path='by-tags')
-    def by_tags(self, request):
-        """Фильтрация по нескольким тегам (через запятую)"""
-        tags_param = request.query_params.get('tags', '')
-        tag_slugs = tags_param.split(',') if tags_param else []
-
-        if not tag_slugs:
-            return self.list(request)
-
-        from recipes.models import Tag
-        tags = Tag.objects.filter(slug__in=tag_slugs)
-
-        if not tags:
-            return Response({'results': [], 'count': 0})
-
-        recipes = Recipe.objects.filter(tags__in=tags).distinct()
-
-        page = self.paginate_queryset(recipes)
-        if page is not None:
-            serializer = RecipeListSerializer(
-                page,
-                many=True,
-                context={'request': request}
-            )
-            return self.get_paginated_response(serializer.data)
-
-        serializer = RecipeListSerializer(
-            recipes,
-            many=True,
-            context={'request': request}
-        )
-        return Response(serializer.data)
 
 
 def redirect_to_recipe(request, code):
