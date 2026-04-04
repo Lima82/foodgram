@@ -1,3 +1,4 @@
+# для локальной разработки
 version: '3.3'
 services:
 
@@ -6,16 +7,6 @@ services:
     build: ../frontend
     volumes:
       - ../frontend/:/app/result_build/
-  backend:
-    container_name: foodgram-backend
-    build: ../backend
-    ports:
-      - "8000:8000"
-    volumes:
-      - ../backend:/app
-    environment:
-      - DEBUG=True
-    command: python manage.py runserver 0.0.0.0:8000
   nginx:
     container_name: foodgram-proxy
     image: nginx:1.25.4-alpine
@@ -25,7 +16,3 @@ services:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - ../frontend/build:/usr/share/nginx/html/
       - ../docs/:/usr/share/nginx/html/api/docs/
-    depends_on:
-      - frontend
-      - backend
-
