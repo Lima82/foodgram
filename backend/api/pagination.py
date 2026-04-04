@@ -1,13 +1,14 @@
 from rest_framework.pagination import PageNumberPagination
 
+from api.constants import PAGE_SIZE
 
-class CustomPageNumberPagination(PageNumberPagination):
+
+class PageNumberPaginationWithLimit(PageNumberPagination):
     """
-    Кастомный класс для пагинации с размером страницы в 6 элемеентов.
+    Кастомный класс для пагинации с размером страницы в 6 элементов.
 
     Позволяет изменять размер страницы с помощью параметра запроса limit.
     """
 
-    page_size = 6
+    page_size = PAGE_SIZE
     page_size_query_param = 'limit'
-    max_page_size = 100

@@ -16,18 +16,8 @@ class IsAuthorOrReadOnly(permissions.BasePermission):
         """
         Проверка на уровне запроса (без объекта).
         """
-        if view.action == 'create':
+        if request.method == 'POST':
             return request.user.is_authenticated
-
-        if view.action in (
-            'favorite',
-            'shopping_cart',
-            'download_shopping_cart'
-        ):
-            return request.user.is_authenticated
-
-        if view.action == 'get_short_link':
-            return True
 
         return True
 
@@ -35,10 +25,7 @@ class IsAuthorOrReadOnly(permissions.BasePermission):
         """
         Проверка на уровне объекта.
         """
-        if request.method in permissions.SAFE_METHODS:
-            return True
-
-        if view.action in ('favorite', 'shopping_cart'):
-            return True
-
-        return obj.author == request.user
+        return (
+            request.method in permissions.SAFE_METHODS
+            or obj.author == request.user
+        )

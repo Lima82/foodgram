@@ -9,6 +9,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 if os.path.exists(BASE_DIR / '.env'):
     load_dotenv()
 
+DB_ENGINE = os.getenv('DB_ENGINE', 'sqlite3')
+
 SECRET_KEY = os.getenv('SECRET_KEY', default=get_random_secret_key())
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
@@ -65,14 +67,7 @@ WSGI_APPLICATION = 'foodgram.wsgi.application'
 
 # Database
 
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-else:
+if DB_ENGINE == 'postgresql':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -81,6 +76,13 @@ else:
             'PASSWORD': os.getenv('POSTGRES_PASSWORD', ''),
             'HOST': os.getenv('DB_HOST', ''),
             'PORT': os.getenv('DB_PORT', '5432'),
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
 
@@ -130,7 +132,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Custom user model
 
-AUTH_USER_MODEL = 'users.CustomUser'
+AUTH_USER_MODEL = 'users.User'
 
 # REST Framework settings
 
@@ -152,19 +154,21 @@ REST_FRAMEWORK = {
 # Authentication backends
 
 AUTHENTICATION_BACKENDS = [
-    'users.backends.EmailAuthBackend',
+    'djoser.auth_backends.LoginFieldBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
 
 # Djoser settings
 
+# В стандартном UserCreateSerializer Djoser нет полей first_name и last_name
+# Без сериализатора users.serializers.UserCreateSerializer тесты Postman сразу падают с ошибкой
 DJOSER = {
     'LOGIN_FIELD': 'email',
     'HIDE_USERS': False,
     'SERIALIZERS': {
         'user_create': 'users.serializers.UserCreateSerializer',
-        'user': 'users.serializers.CustomUserSerializer',
-        'current_user': 'users.serializers.CustomUserSerializer',
+        'user': 'users.serializers.UserSerializer',
+        'current_user': 'users.serializers.UserSerializer',
     },
     'PERMISSIONS': {
         'user': ['rest_framework.permissions.AllowAny'],

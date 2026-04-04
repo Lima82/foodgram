@@ -1,14 +1,8 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin, Group
+from django.contrib.auth.admin import UserAdmin
 from django.db.models import Count
-from django.contrib.admin.sites import NotRegistered
 
-from users.models import CustomUser, Subscription
-
-try:
-    admin.site.unregister(Group)
-except NotRegistered:
-    pass
+from users.models import Subscription, User
 
 
 class SubscriptionInline(admin.TabularInline):
@@ -19,17 +13,17 @@ class SubscriptionInline(admin.TabularInline):
     verbose_name_plural = 'Подписки'
 
 
-class CustomUserAdmin(UserAdmin):
+class UserAccountAdmin(UserAdmin):
     """Настройка админки юзера."""
 
     list_display = (
         'username', 'email', 'first_name',
-        'last_name', 'avatar', 'role'
+        'last_name', 'avatar',
     )
     search_fields = ('username', 'email')
-    list_filter = ('role',)
+
     fieldsets = UserAdmin.fieldsets + (
-        ('Дополнительно', {'fields': ('avatar', 'role')}),
+        ('Дополнительно', {'fields': ('avatar',)}),
     )
     inlines = [SubscriptionInline]
 
@@ -73,5 +67,5 @@ class SubscriptionAdmin(admin.ModelAdmin):
     list_filter = ('created_at',)
 
 
-admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(User, UserAccountAdmin)
 admin.site.register(Subscription, SubscriptionAdmin)

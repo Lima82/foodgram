@@ -7,57 +7,75 @@ from rest_framework.permissions import (
 )
 from rest_framework.response import Response
 
-from api.pagination import CustomPageNumberPagination
-from api.serializers import SubscriptionSerializer
-from users.models import CustomUser, Subscription
-from users.serializers import AvatarSerializer, CustomUserSerializer
+from api.pagination import PageNumberPaginationWithLimit
+from api.serializers import (
+    AvatarSerializer,
+    SubscribeCreateSerializer,
+    SubscriptionSerializer,
+)
+from users.models import Subscription, User
+from users.serializers import UserSerializer
 
 
-class CustomUserViewSet(UserViewSet):
+class UserAccountViewSet(UserViewSet):
     """ViewSet для управления пользователями."""
 
-    queryset = CustomUser.objects.all()
-    serializer_class = CustomUserSerializer
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
-    pagination_class = CustomPageNumberPagination
+    pagination_class = PageNumberPaginationWithLimit
 
-    def get_permissions(self):
-        """Настраивает права доступа для разных действий."""
-        if self.action in ['me', 'avatar', 'subscriptions', 'subscribe']:
-            return [IsAuthenticated()]
-        return super().get_permissions()
+    @action(
+        detail=False,
+        methods=['get'],
+        url_path='me',
+        permission_classes=[IsAuthenticated]
+    )
+    def me(self, request, *args, **kwargs):
+        """
+        Переопределяет метод me для ограничения доступа.
 
-    @action(detail=False, methods=['put', 'delete'], url_path='me/avatar')
-    def avatar(self, request):
-        """Добавляет или удаляет аватар текущего пользователя."""
-        user = request.user
-
-        if request.method == 'PUT':
-            return self._update_avatar(request, user)
-        return self._delete_avatar(user)
-
-    def _update_avatar(self, request, user):
-        """Обновляет аватар пользователя."""
-        serializer = AvatarSerializer(data=request.data)
-        if not serializer.is_valid():
+        Djoser предоставляет GET, PUT, PATCH, DELETE для /users/me/.
+        Ограничивает только GET.
+        """
+        if request.method != 'GET':
             return Response(
-                serializer.errors,
-                status=status.HTTP_400_BAD_REQUEST
+                {'detail': 'Метод не разрешен.'},
+                status=status.HTTP_405_METHOD_NOT_ALLOWED
             )
 
+        return super().me(request, *args, **kwargs)
+
+    @action(
+        detail=False,
+        methods=['put'],
+        url_path='me/avatar',
+        permission_classes=[IsAuthenticated]
+    )
+    def update_avatar(self, request):
+        """Обновляет аватар текущего пользователя."""
+        user = request.user
+        serializer = AvatarSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
         user.avatar = serializer.validated_data['avatar']
         user.save()
         return Response({'avatar': user.avatar.url})
 
-    def _delete_avatar(self, user):
-        """Удаляет аватар пользователя."""
+    @update_avatar.mapping.delete
+    def delete_avatar(self, request):
+        """Удаляет аватар текущего пользователя."""
+        user = request.user
         if user.avatar:
             user.avatar.delete()
-            user.avatar = None
             user.save()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-    @action(detail=False, methods=['get'], url_path='subscriptions')
+    @action(
+        detail=False,
+        methods=['get'],
+        url_path='subscriptions',
+        permission_classes=[IsAuthenticated]
+    )
     def subscriptions(self, request):
         """Возвращает список подписок текущего пользователя."""
         subscriptions = Subscription.objects.filter(user=request.user)
@@ -67,47 +85,35 @@ class CustomUserViewSet(UserViewSet):
         )
         return self.get_paginated_response(serializer.data)
 
-    @action(detail=True, methods=['post', 'delete'], url_path='subscribe')
+    @action(
+        detail=True,
+        methods=['post'],
+        url_path='subscribe',
+        permission_classes=[IsAuthenticated]
+    )
     def subscribe(self, request, id=None):
-        """Подписывает или отписывает от пользователя."""
+        """Подписывается на пользователя."""
         author = self.get_object()
-
-        if request.user == author:
-            return Response(
-                {'errors': 'Нельзя подписаться на себя'},
-                status=status.HTTP_400_BAD_REQUEST
-            )
-
-        if request.method == 'POST':
-            return self._create_subscription(request.user, author)
-
-        return self._delete_subscription(request.user, author)
-
-    def _create_subscription(self, user, author):
-        """Создает подписку."""
-        if Subscription.objects.filter(user=user, author=author).exists():
-            return Response(
-                {'errors': 'Вы уже подписаны'},
-                status=status.HTTP_400_BAD_REQUEST
-            )
-
-        subscription = Subscription.objects.create(user=user, author=author)
-        serializer = SubscriptionSerializer(
-            subscription, context={'request': self.request}
+        serializer = SubscribeCreateSerializer(
+            data={'author_id': author.id},
+            context={'request': request}
         )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-    def _delete_subscription(self, user, author):
-        """Удаляет подписку."""
-        subscription = Subscription.objects.filter(user=user, author=author)
+    @subscribe.mapping.delete
+    def unsubscribe(self, request, id=None):
+        """Отписывается от пользователя."""
+        author = self.get_object()
+        deleted_count, _ = Subscription.objects.filter(
+            user=request.user, author=author
+        ).delete()
 
-        if not subscription.exists():
+        if deleted_count == 0:
             return Response(
                 {'errors': 'Вы не подписаны'},
                 status=status.HTTP_400_BAD_REQUEST
             )
-
-        subscription.delete()
-
         return Response(status=status.HTTP_204_NO_CONTENT)

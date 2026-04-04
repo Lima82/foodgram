@@ -1,14 +1,28 @@
+import random
+import string
+
 from django.db import models
+from django.core.validators import (
+    MaxValueValidator,
+    MinValueValidator,
+    RegexValidator,
+)
 
 from api.constants import (
+    INGREDIENT_AMOUNT_MAX,
+    INGREDIENT_AMOUNT_MIN,
     INGREDIENT_NAME_MAX_LENGTH,
+    COOKING_TIME_MAX,
+    COOKING_TIME_MIN,
     MEASUREMENT_UNIT_MAX_LENGTH,
     RECIPE_NAME_MAX_LENGTH,
     SLUG_MAX_LENGTH,
+    SLUG_REGEX,
+    SHORT_CODE_FOR_LINK,
     SHORT_LINK_MAX_LENGTH,
     TAG_MAX_LENGTH
 )
-from users.models import CustomUser
+from users.models import User
 
 
 class Tag(models.Model):
@@ -22,13 +36,17 @@ class Tag(models.Model):
     slug = models.SlugField(
         max_length=SLUG_MAX_LENGTH,
         unique=True,
+        validators=[RegexValidator(
+            regex=SLUG_REGEX,
+            message='Слаг тега содержит недопустимые символы'
+        )],
         verbose_name='Уникальный слаг'
     )
 
     class Meta:
         verbose_name = 'Тег'
         verbose_name_plural = 'Теги'
-        ordering = ['name']
+        ordering = ('name',)
 
     def __str__(self):
         return self.name
@@ -49,7 +67,7 @@ class Ingredient(models.Model):
     class Meta:
         verbose_name = 'Ингредиент'
         verbose_name_plural = 'Ингредиенты'
-        ordering = ['name', ]
+        ordering = ('name',)
 
     def __str__(self):
         return f'{self.name}, {self.measurement_unit}'
@@ -59,7 +77,7 @@ class Recipe(models.Model):
     """Модель рецептов."""
 
     author = models.ForeignKey(
-        CustomUser,
+        User,
         on_delete=models.CASCADE,
         related_name='recipes',
         verbose_name='Автор'
@@ -81,7 +99,17 @@ class Recipe(models.Model):
         verbose_name='Теги'
     )
     cooking_time = models.PositiveSmallIntegerField(
-        verbose_name='Время приготовления (в минутах)'
+        verbose_name='Время приготовления (в минутах)',
+        validators=[
+            MinValueValidator(
+                COOKING_TIME_MIN,
+                message='Время приготовления не может быть меньше 1 минуты'
+            ),
+            MaxValueValidator(
+                COOKING_TIME_MAX,
+                message='Время приготовления не может быть больше 32000 минут'
+            ),
+        ],
     )
     pub_date = models.DateTimeField(
         auto_now_add=True,
@@ -103,6 +131,21 @@ class Recipe(models.Model):
     def __str__(self):
         return self.name
 
+    def _generate_short_code(self, length=SHORT_CODE_FOR_LINK):
+        """Генерирует случайный код для короткой ссылки."""
+        characters = string.ascii_letters + string.digits
+        return ''.join(random.choice(characters) for _ in range(length))
+
+    def save(self, *args, **kwargs):
+        """Генерирует короткую ссылку при создании, если её нет."""
+        if not self.short_link:
+            while True:
+                code = self._generate_short_code()
+                if not Recipe.objects.filter(short_link=code).exists():
+                    self.short_link = code
+                    break
+        super().save(*args, **kwargs)
+
 
 class RecipeComposition(models.Model):
     """Модель определения количества ингредиента в рецепте."""
@@ -119,7 +162,17 @@ class RecipeComposition(models.Model):
         verbose_name='Ингредиент'
     )
     amount = models.PositiveSmallIntegerField(
-        verbose_name='Количество'
+        verbose_name='Количество',
+        validators=[
+            MinValueValidator(
+                INGREDIENT_AMOUNT_MIN,
+                message='Количество ингредиента не может быть меньше 1'
+            ),
+            MaxValueValidator(
+                INGREDIENT_AMOUNT_MAX,
+                message='Количество ингредиента не может быть больше 32000'
+            ),
+        ],
     )
 
     class Meta:
@@ -144,7 +197,7 @@ class Favorite(models.Model):
     """Модель для раздела 'Избранное'."""
 
     user = models.ForeignKey(
-        CustomUser,
+        User,
         on_delete=models.CASCADE,
         related_name='favorites',
         verbose_name='Пользователь'
@@ -174,7 +227,7 @@ class ShoppingCart(models.Model):
     """Модель списка покупок."""
 
     user = models.ForeignKey(
-        CustomUser,
+        User,
         on_delete=models.CASCADE,
         related_name='shopping_cart',
         verbose_name='Пользователь'

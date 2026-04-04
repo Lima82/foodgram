@@ -1,9 +1,10 @@
-import django_filters
+from django.db.models import BooleanField, Case, Value, When
+from django_filters import rest_framework as filters
 
-from recipes.models import Recipe
+from recipes.models import Ingredient, Recipe
 
 
-class RecipeFilter(django_filters.FilterSet):
+class RecipeFilter(filters.FilterSet):
     """
     Фильтр для рецептов.
 
@@ -14,29 +15,28 @@ class RecipeFilter(django_filters.FilterSet):
     - списку покупок (is_in_shopping_cart)
     """
 
-    tags = django_filters.AllValuesMultipleFilter(
+    tags = filters.AllValuesMultipleFilter(
         field_name='tags__slug',
         method='filter_tags'
     )
-    author = django_filters.NumberFilter(
+    author = filters.NumberFilter(
         field_name='author__id',
     )
-    is_favorited = django_filters.BooleanFilter(
+    is_favorited = filters.BooleanFilter(
         method='filter_is_favorited',
     )
-    is_in_shopping_cart = django_filters.BooleanFilter(
+    is_in_shopping_cart = filters.BooleanFilter(
         method='filter_is_in_shopping_cart',
     )
 
     class Meta:
         model = Recipe
-        fields = ['tags', 'author']
+        fields = ['author', 'tags', 'is_favorited', 'is_in_shopping_cart']
 
     def filter_tags(self, queryset, name, value):
         """
         Фильтрация по нескольким тегам.
         """
-
         if value:
             return queryset.filter(tags__slug__in=value).distinct()
         return queryset
@@ -54,3 +54,36 @@ class RecipeFilter(django_filters.FilterSet):
             return queryset.filter(shopping_cart__user=self.request.user)
 
         return queryset
+
+
+class IngredientFilter(filters.FilterSet):
+    """Фильтр для ингредиентов с поиском по названию."""
+
+    name = filters.CharFilter(method='filter_by_name')
+
+    def filter_by_name(self, queryset, name, value):
+        """
+        Фильтрует ингредиенты по параметру name.
+        Для одного символа - только начинающиеся с этого символа.
+        Для двух и более - поиск по вхождению с сортировкой.
+        """
+        if not value:
+            return queryset
+
+        if len(value) == 1:
+            return queryset.filter(name__istartswith=value)
+
+        queryset = queryset.annotate(
+            starts_with=Case(
+                When(name__istartswith=value, then=Value(True)),
+                default=Value(False),
+                output_field=BooleanField(),
+            )
+        )
+        return queryset.filter(
+            name__icontains=value
+        ).order_by('-starts_with', 'name')
+
+    class Meta:
+        model = Ingredient
+        fields = ('name',)
