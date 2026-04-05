@@ -160,15 +160,12 @@ AUTHENTICATION_BACKENDS = [
 
 # Djoser settings
 
-# В стандартном UserCreateSerializer Djoser нет полей first_name и last_name
-# Без сериализатора users.serializers.UserCreateSerializer тесты Postman сразу падают с ошибкой
 DJOSER = {
     'LOGIN_FIELD': 'email',
     'HIDE_USERS': False,
     'SERIALIZERS': {
-        'user_create': 'users.serializers.UserCreateSerializer',
-        'user': 'users.serializers.UserSerializer',
-        'current_user': 'users.serializers.UserSerializer',
+        'user': 'api.serializers.UserSerializer',
+        'current_user': 'api.serializers.UserSerializer',
     },
     'PERMISSIONS': {
         'user': ['rest_framework.permissions.AllowAny'],
@@ -176,6 +173,4 @@ DJOSER = {
     },
 }
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://orlm82.ddns.net',
-]
+CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', '').split(' ')

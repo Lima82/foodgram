@@ -1,7 +1,3 @@
-# Регулярные выражения
-SLUG_REGEX = r'^[-a-zA-Z0-9_]+$'
-USERNAME_REGEX = r'^[\w.@+-]+\Z'
-
 # Длина полей
 INGREDIENT_NAME_MAX_LENGTH = 128
 MEASUREMENT_UNIT_MAX_LENGTH = 64

@@ -159,6 +159,7 @@ jobs:
             SECRET_KEY=${{ secrets.SECRET_KEY }}
             DEBUG=${{ secrets.DEBUG }}
             ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}
+            CSRF_TRUSTED_ORIGINS=${{ secrets.CSRF_TRUSTED_ORIGINS }}
             POSTGRES_DB=foodgram
             POSTGRES_USER=foodgram_user
             POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}

@@ -5,7 +5,6 @@ from django.db import models
 from django.core.validators import (
     MaxValueValidator,
     MinValueValidator,
-    RegexValidator,
 )
 
 from api.constants import (
@@ -17,7 +16,6 @@ from api.constants import (
     MEASUREMENT_UNIT_MAX_LENGTH,
     RECIPE_NAME_MAX_LENGTH,
     SLUG_MAX_LENGTH,
-    SLUG_REGEX,
     SHORT_CODE_FOR_LINK,
     SHORT_LINK_MAX_LENGTH,
     TAG_MAX_LENGTH
@@ -36,10 +34,6 @@ class Tag(models.Model):
     slug = models.SlugField(
         max_length=SLUG_MAX_LENGTH,
         unique=True,
-        validators=[RegexValidator(
-            regex=SLUG_REGEX,
-            message='Слаг тега содержит недопустимые символы'
-        )],
         verbose_name='Уникальный слаг'
     )
 
@@ -103,11 +97,17 @@ class Recipe(models.Model):
         validators=[
             MinValueValidator(
                 COOKING_TIME_MIN,
-                message='Время приготовления не может быть меньше 1 минуты'
+                message=(
+                    f'Время приготовления не может быть меньше '
+                    f'{COOKING_TIME_MIN} минуты'
+                )
             ),
             MaxValueValidator(
                 COOKING_TIME_MAX,
-                message='Время приготовления не может быть больше 32000 минут'
+                message=(
+                    f'Время приготовления не может быть больше '
+                    f'{COOKING_TIME_MAX} минут'
+                )
             ),
         ],
     )
@@ -166,11 +166,17 @@ class RecipeComposition(models.Model):
         validators=[
             MinValueValidator(
                 INGREDIENT_AMOUNT_MIN,
-                message='Количество ингредиента не может быть меньше 1'
+                message=(
+                    f'Количество ингредиента не может быть меньше '
+                    f'{INGREDIENT_AMOUNT_MIN}'
+                )
             ),
             MaxValueValidator(
                 INGREDIENT_AMOUNT_MAX,
-                message='Количество ингредиента не может быть больше 32000'
+                message=(
+                    f'Количество ингредиента не может быть больше '
+                    f'{INGREDIENT_AMOUNT_MAX}'
+                )
             ),
         ],
     )

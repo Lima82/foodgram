@@ -10,7 +10,33 @@ from recipes.models import (
     Tag,
 )
 from users.models import Subscription, User
-from users.serializers import UserSerializer
+
+
+class UserSerializer(serializers.ModelSerializer):
+    """Сериализатор для просмотра пользователя."""
+
+    is_subscribed = serializers.SerializerMethodField()
+    avatar = serializers.ImageField(read_only=True)
+
+    class Meta:
+        model = User
+        fields = (
+            'id', 'email', 'username', 'first_name', 'last_name',
+            'is_subscribed', 'avatar'
+        )
+
+    def get_is_subscribed(self, obj):
+        """Проверяет, подписан ли текущий пользователь на другого."""
+        request = self.context.get('request')
+
+        return (
+            bool(request)
+            and request.user.is_authenticated
+            and Subscription.objects.filter(
+                user=request.user,
+                author=obj
+            ).exists()
+        )
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -203,16 +229,14 @@ class RecipeCreateUpdateSerializer(serializers.ModelSerializer):
 
         instance = super().update(instance, validated_data)
         instance.tags.set(tags)
-
-        # ingredients, в данном случае, это обратная связь через
-        # RecipeComposition, null=False по умолчанию, поэтому .clear()
-        # не доступен. Если поставить null=True, то можем получить в таблице
-        # recipes_recipecomposition ингредиенты и их количество без привязки
-        # к рецепту, поэтому я использую .all().delete()
         instance.ingredients.all().delete()
         self._create_ingredients(instance, ingredients)
 
         return instance
+
+    def to_representation(self, instance):
+        """Возвращает полные данные рецепта."""
+        return RecipeListSerializer(instance, context=self.context).data
 
 
 class FavoriteSerializer(serializers.ModelSerializer):
@@ -221,7 +245,6 @@ class FavoriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Favorite
         fields = ('user', 'recipe')
-        read_only_fields = ('user', 'recipe')
 
     def validate(self, data):
         """Проверяет, что рецепт еще не в избранном."""
@@ -230,12 +253,6 @@ class FavoriteSerializer(serializers.ModelSerializer):
         if Favorite.objects.filter(user=request.user, recipe=recipe).exists():
             raise serializers.ValidationError('Рецепт уже в избранном')
         return data
-
-    def create(self, validated_data):
-        """Создает запись в избранном."""
-        request = self.context.get('request')
-        recipe = self.context.get('recipe')
-        return Favorite.objects.create(user=request.user, recipe=recipe)
 
     def to_representation(self, instance):
         """Форматирует ответ."""
@@ -250,7 +267,6 @@ class ShoppingCartSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShoppingCart
         fields = ('user', 'recipe')
-        read_only_fields = ('user', 'recipe')
 
     def validate(self, data):
         """Проверяет, что рецепт еще не в списке покупок."""
@@ -262,12 +278,6 @@ class ShoppingCartSerializer(serializers.ModelSerializer):
         ).exists():
             raise serializers.ValidationError('Рецепт уже в списке покупок')
         return data
-
-    def create(self, validated_data):
-        """Создает запись в списке покупок."""
-        request = self.context.get('request')
-        recipe = self.context.get('recipe')
-        return ShoppingCart.objects.create(user=request.user, recipe=recipe)
 
     def to_representation(self, instance):
         """Форматирует ответ."""
@@ -299,13 +309,9 @@ class ShortRecipeSerializer(serializers.ModelSerializer):
 class SubscriptionSerializer(serializers.ModelSerializer):
     """Сериализатор для подписок."""
 
-    email = serializers.EmailField(source='author.email')
-    username = serializers.CharField(source='author.username')
-    first_name = serializers.CharField(source='author.first_name')
-    last_name = serializers.CharField(source='author.last_name')
     is_subscribed = serializers.SerializerMethodField()
     recipes = serializers.SerializerMethodField()
-    recipes_count = serializers.IntegerField(source='author.recipes.count')
+    recipes_count = serializers.IntegerField(source='recipes.count')
     avatar = serializers.SerializerMethodField()
 
     class Meta:
@@ -323,7 +329,7 @@ class SubscriptionSerializer(serializers.ModelSerializer):
         """Возвращает рецепты автора с учетом параметра recipes_limit."""
         request = self.context.get('request')
         limit = request.query_params.get('recipes_limit')
-        recipes = obj.author.recipes.all()
+        recipes = obj.recipes.all()
 
         if limit:
             try:
@@ -339,43 +345,37 @@ class SubscriptionSerializer(serializers.ModelSerializer):
 
     def get_avatar(self, obj):
         """Возвращает URL аватара или None."""
-        if obj.author.avatar:
-            return obj.author.avatar.url
+        if obj.avatar:
+            return obj.avatar.url
         return None
 
 
-class SubscribeCreateSerializer(serializers.Serializer):
+class SubscribeCreateSerializer(serializers.ModelSerializer):
     """Сериализатор для создания подписки."""
-    author_id = serializers.IntegerField()
 
-    def validate_author_id(self, value):
+    class Meta:
+        model = Subscription
+        fields = ('user', 'author')
+
+    def validate(self, data):
         """Проверяет, что пользователь не подписывается на себя."""
-        request = self.context.get('request')
-        user = request.user
+        author = data.get('author')
+        user = data.get('user')
 
-        if user.id == value:
+        if user.id == author.id:
             raise serializers.ValidationError('Нельзя подписаться на себя')
 
-        if not User.objects.filter(id=value).exists():
-            raise serializers.ValidationError('Пользователь не найден')
-
-        if Subscription.objects.filter(user=user, author_id=value).exists():
+        if Subscription.objects.filter(user=user, author=author).exists():
             raise serializers.ValidationError('Вы уже подписаны')
 
-        return value
-
-    def create(self, validated_data):
-        """Создает подписку."""
-        request = self.context.get('request')
-        subscription = Subscription.objects.create(
-            user=request.user,
-            author_id=validated_data['author_id']
-        )
-        return subscription
+        return data
 
     def to_representation(self, instance):
         """Форматирует ответ для создания подписки."""
-        return SubscriptionSerializer(instance, context=self.context).data
+        return SubscriptionSerializer(
+            instance.author,
+            context=self.context
+        ).data
 
 
 class AvatarSerializer(serializers.Serializer):

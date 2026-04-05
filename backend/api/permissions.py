@@ -16,10 +16,7 @@ class IsAuthorOrReadOnly(permissions.BasePermission):
         """
         Проверка на уровне запроса (без объекта).
         """
-        if request.method == 'POST':
-            return request.user.is_authenticated
-
-        return True
+        return request.method != 'POST' or request.user.is_authenticated
 
     def has_object_permission(self, request, view, obj):
         """

@@ -1,34 +1,18 @@
 from django.contrib.auth.models import AbstractUser
-from django.core.validators import RegexValidator
 from django.db import models
 
 from api.constants import (
     USER_FIRST_NAME_MAX_LENGTH,
-    USERNAME_MAX_LENGTH,
     USER_LAST_NAME_MAX_LENGTH,
-    USERNAME_REGEX,
 )
 
 
 class User(AbstractUser):
     """Кастомная модель пользователя с email для логина."""
 
-    # Без этой проверки не проходят тесты в Postman
-    username_validator = RegexValidator(
-        regex=USERNAME_REGEX,
-        message='Имя пользователя содержит недопустимые символы'
-    )
-    username = models.CharField(
-        # Без явного указания ограничения по длине не проходят тесты в
-        # Postman
-        max_length=USERNAME_MAX_LENGTH,
-        unique=True,
-        validators=[username_validator],
-        verbose_name='Имя пользователя',
-        error_messages={
-            'unique': 'Пользователь с таким именем уже существует.'
-        }
-    )
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
+
     email = models.EmailField(
         unique=True,
         db_index=True,
@@ -37,14 +21,10 @@ class User(AbstractUser):
             'unique': 'Пользователь с таким email уже существует.',
         }
     )
-    # Без явного указания ограничения по длине не проходят тесты в
-    # Postman
     first_name = models.CharField(
         max_length=USER_FIRST_NAME_MAX_LENGTH,
         verbose_name='Имя'
     )
-    # Без без явного указания ограничения по длине не проходят тесты в
-    # Postman
     last_name = models.CharField(
         max_length=USER_LAST_NAME_MAX_LENGTH,
         verbose_name='Фамилия'

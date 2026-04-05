@@ -85,9 +85,6 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
     def get_serializer_class(self):
         """Выбирает сериализатор в зависимости от действия."""
-        if self.action == 'list':
-            return RecipeListSerializer
-
         if self.action in ('create', 'update', 'partial_update'):
             return RecipeCreateUpdateSerializer
 
@@ -96,82 +93,6 @@ class RecipeViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         """Сохраняет рецепт у автора."""
         serializer.save(author=self.request.user)
-
-    # Следующие три функции нужны для возврата ответа с полной информацией
-    # в соответствии со спецификацией, без них тесты Postman падают
-    def _get_full_recipe_response(self, recipe, status_code):
-        """
-        Формирует ответ с полными данными рецепта.
-        """
-        output_serializer = RecipeListSerializer(
-            recipe,
-            context={'request': self.request}
-        )
-        return Response(output_serializer.data, status=status_code)
-
-    def create(self, request, *args, **kwargs):
-        """
-        Создает рецепт и возвращает ответ с полной информацией.
-        """
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer)
-
-        return self._get_full_recipe_response(
-            serializer.instance,
-            status.HTTP_201_CREATED
-        )
-
-    def update(self, request, *args, **kwargs):
-        """
-        Обновляет рецепт и возвращает ответ с полной информацией.
-        """
-        partial = kwargs.pop('partial', False)
-        instance = self.get_object()
-        serializer = self.get_serializer(
-            instance,
-            data=request.data,
-            partial=partial
-        )
-        serializer.is_valid(raise_exception=True)
-        self.perform_update(serializer)
-
-        return self._get_full_recipe_response(
-            serializer.instance,
-            status.HTTP_200_OK
-        )
-
-    def _add_or_remove_relation(
-            self, request, pk, serializer_class, model, error_remove
-    ):
-        """
-        Добавляет или удаляет связь между пользователем и рецептом.
-
-        Используется для:
-        - избранного (Favorite)
-        - списка покупок (ShoppingCart)
-        """
-        recipe = self.get_object()
-
-        if request.method == 'POST':
-            serializer = serializer_class(
-                data={},
-                context={'request': request, 'recipe': recipe}
-            )
-            serializer.is_valid(raise_exception=True)
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-        deleted_count, _ = model.objects.filter(
-            user=request.user, recipe=recipe
-        ).delete()
-
-        if deleted_count == 0:
-            return Response(
-                {'errors': error_remove},
-                status=status.HTTP_400_BAD_REQUEST
-            )
-        return Response(status=status.HTTP_204_NO_CONTENT)
 
     @action(
         detail=True,
@@ -183,11 +104,12 @@ class RecipeViewSet(viewsets.ModelViewSet):
         """Добавляет рецепт в избранное."""
         recipe = self.get_object()
         serializer = FavoriteSerializer(
-            data={},
-            context={'request': request, 'recipe': recipe}
+            data={'user': request.user.id, 'recipe': recipe.id},
+            context={'request': request}
         )
         serializer.is_valid(raise_exception=True)
         serializer.save()
+
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     @add_favorite.mapping.delete
@@ -197,7 +119,8 @@ class RecipeViewSet(viewsets.ModelViewSet):
         deleted_count, _ = Favorite.objects.filter(
             user=request.user, recipe=recipe
         ).delete()
-        if deleted_count == 0:
+
+        if not deleted_count:
             return Response(
                 {'errors': 'Рецепта нет в избранном'},
                 status=status.HTTP_400_BAD_REQUEST
@@ -214,11 +137,12 @@ class RecipeViewSet(viewsets.ModelViewSet):
         """Добавляет рецепт в список покупок."""
         recipe = self.get_object()
         serializer = ShoppingCartSerializer(
-            data={},
-            context={'request': request, 'recipe': recipe}
+            data={'user': request.user.id, 'recipe': recipe.id},
+            context={'request': request}
         )
         serializer.is_valid(raise_exception=True)
         serializer.save()
+
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     @add_shopping_cart.mapping.delete
@@ -228,7 +152,8 @@ class RecipeViewSet(viewsets.ModelViewSet):
         deleted_count, _ = ShoppingCart.objects.filter(
             user=request.user, recipe=recipe
         ).delete()
-        if deleted_count == 0:
+
+        if not deleted_count:
             return Response(
                 {'errors': 'Рецепта нет в списке покупок'},
                 status=status.HTTP_400_BAD_REQUEST

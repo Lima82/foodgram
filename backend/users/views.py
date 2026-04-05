@@ -12,9 +12,9 @@ from api.serializers import (
     AvatarSerializer,
     SubscribeCreateSerializer,
     SubscriptionSerializer,
+    UserSerializer,
 )
 from users.models import Subscription, User
-from users.serializers import UserSerializer
 
 
 class UserAccountViewSet(UserViewSet):
@@ -38,12 +38,6 @@ class UserAccountViewSet(UserViewSet):
         Djoser предоставляет GET, PUT, PATCH, DELETE для /users/me/.
         Ограничивает только GET.
         """
-        if request.method != 'GET':
-            return Response(
-                {'detail': 'Метод не разрешен.'},
-                status=status.HTTP_405_METHOD_NOT_ALLOWED
-            )
-
         return super().me(request, *args, **kwargs)
 
     @action(
@@ -79,7 +73,8 @@ class UserAccountViewSet(UserViewSet):
     def subscriptions(self, request):
         """Возвращает список подписок текущего пользователя."""
         subscriptions = Subscription.objects.filter(user=request.user)
-        page = self.paginate_queryset(subscriptions)
+        authors = [sub.author for sub in subscriptions]
+        page = self.paginate_queryset(authors)
         serializer = SubscriptionSerializer(
             page, many=True, context={'request': request}
         )
@@ -95,7 +90,7 @@ class UserAccountViewSet(UserViewSet):
         """Подписывается на пользователя."""
         author = self.get_object()
         serializer = SubscribeCreateSerializer(
-            data={'author_id': author.id},
+            data={'user': request.user.id, 'author': author.id},
             context={'request': request}
         )
         serializer.is_valid(raise_exception=True)
