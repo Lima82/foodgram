@@ -37,6 +37,7 @@ const Favorites = ({ updateOrders }) => {
   useEffect(_ => {
     api.getTags()
       .then(tags => {
+//        setTagsValue(tags.map(tag => ({ ...tag, value: true })))
         setTagsValue(tags.map(tag => ({ ...tag, value: true })))
       })
   }, [])

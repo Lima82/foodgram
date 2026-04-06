@@ -9,11 +9,13 @@ services:
   db:
     image: postgres:15
     env_file: .env
+    restart: always
     volumes:
       - pg_data:/var/lib/postgresql/data
   backend:
     image: lima82/foodgram_backend:latest
     env_file: .env
+    restart: always
     volumes:
       - static:/app/static/
       - media:/app/media/
@@ -29,6 +31,7 @@ services:
       - backend
   gateway:
     image: lima82/foodgram_gateway:latest
+    restart: always
     ports:
       - 8000:80
     volumes:
