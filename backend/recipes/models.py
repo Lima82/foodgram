@@ -98,14 +98,14 @@ class Recipe(models.Model):
             MinValueValidator(
                 COOKING_TIME_MIN,
                 message=(
-                    f'Время приготовления не может быть меньше '
+                    'Время приготовления не может быть меньше '
                     f'{COOKING_TIME_MIN} минуты'
                 )
             ),
             MaxValueValidator(
                 COOKING_TIME_MAX,
                 message=(
-                    f'Время приготовления не может быть больше '
+                    'Время приготовления не может быть больше '
                     f'{COOKING_TIME_MAX} минут'
                 )
             ),
@@ -167,14 +167,14 @@ class RecipeComposition(models.Model):
             MinValueValidator(
                 INGREDIENT_AMOUNT_MIN,
                 message=(
-                    f'Количество ингредиента не может быть меньше '
+                    'Количество ингредиента не может быть меньше '
                     f'{INGREDIENT_AMOUNT_MIN}'
                 )
             ),
             MaxValueValidator(
                 INGREDIENT_AMOUNT_MAX,
                 message=(
-                    f'Количество ингредиента не может быть больше '
+                    'Количество ингредиента не может быть больше '
                     f'{INGREDIENT_AMOUNT_MAX}'
                 )
             ),
